@@ -1,0 +1,29 @@
+<div class="container">
+  <div class='col-4'>
+  <figure class="figure">
+      <figcaption class="figure-caption">
+        <h3>
+          <%= @review.title %>
+        </h3>
+        <h4>Sections</h4>
+        <% @review.sections.each do |section| %>
+          <h5><%= section.title %></h5>
+          <p><%= section.body %></p>
+          <%= image_tag(section.picture_url.url, :width => 80, :height => 80) unless section.picture_url.url.nil? %>
+        <% end %>
+        <h4>Specifications</h4>
+        <table>
+          <th>Prestacion</th>
+          <th>Valor</th>
+          <% @review.specifications.each do |specification| %>
+          <tbody>
+            <tr>
+              <td><%= specification.prestacion %></td>
+              <td><%= specification.valor %></td>
+            </tr>
+          <% end %>
+        </table>
+      </figcaption>
+    </figure>
+  </div>
+</div>

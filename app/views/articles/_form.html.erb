@@ -1,0 +1,54 @@
+<%- if @article.errors.any? %>
+    <div class='alert alert-danger'>
+        <h4 class='alert-heading'>Oh no!</h4>
+        <p> Ha ocurrido un error </p>
+    </div>
+<% end %>
+
+<div class='form-group'>
+    <%= form_for @article, :html => {:multipart => true} do |f| %>
+
+        <%= f.label :title %> <br>
+        <%= f.text_field :title, class: 'form-control' %> 
+        <%- if @article.errors[:title].any? %>
+            <span class='badge badge-pill badge-danger'>
+                <%= @article.errors[:title].first %>
+            </span>
+        <br>
+        <% end %>
+        <br>
+
+        <%= f.label :description %> <br>
+        <%= f.text_field :description, class: 'form-control' %>
+        <%- if @article.errors[:description].any? %>
+            <span class='badge badge-pill badge-danger'>
+                <%= @article.errors[:description].first %>
+            </span>
+        <br>
+        <% end %>
+        <br>
+
+        <%= f.label :picture %> <br>
+        <%= f.file_field :picture %>
+        <%- if @article.errors[:picture].any? %>
+            <span class='badge badge-pill badge-danger'>
+                <%= @article.errors[:picture].first %>
+            </span>
+        <br>
+        <% end %>
+        <br>
+
+        <%= f.label :category %> <br>
+        <%= f.text_field :category, class: 'form-control' %>
+        <%- if @article.errors[:category].any? %>
+            <span class='badge badge-pill badge-danger'>
+                <%= @article.errors[:category].first %>
+            </span>
+        <br>
+        <% end %>
+        <br>
+        
+        <%= f.submit 'Enviar', :class => 'btn btn-primary' %>
+
+    <% end %>
+</div>

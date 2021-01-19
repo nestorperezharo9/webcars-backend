@@ -1,0 +1,8 @@
+<tr>
+    <td>
+        <%= f.input_field :_destroy, as: :hidden %>
+        <%= link_to 'Delete', '#', class: 'remove_record' %>
+    </td>
+    <td><%=f.input :prestacion, label: false %></td>
+    <td><%=f.input :valor, label: false, as: :text %></td>
+</tr>

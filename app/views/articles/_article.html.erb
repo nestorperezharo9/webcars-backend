@@ -1,0 +1,11 @@
+<div class='col-4'>
+  <figure class="figure">
+    <figcaption class="figure-caption">
+      <%= image_tag(article.picture.url, :width => 80, :height => 80) unless article.picture.url.nil? %>
+      <%= article.title %>
+      <%= link_to 'Show', article_path(article) %> 
+      <%= link_to 'Edit', edit_article_path(article) %> 
+      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'sure?'} %> 
+    </figcaption>
+  </figure>
+</div>

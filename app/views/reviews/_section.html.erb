@@ -1,0 +1,9 @@
+<tr>
+    <td>
+        <%= f.input_field :_destroy, as: :hidden %>
+        <%= link_to 'Delete', '#', class: 'remove_record' %>
+    </td>
+    <td><%=f.input :title, label: false %></td>
+    <td><%=f.input :body, label: false, as: :text %></td>
+    <td><%=f.input :picture_url, label: false, as: :file %></td>
+</tr>

@@ -1,0 +1,65 @@
+<%- if @review.errors.any? %>
+    <div class='alert alert-danger'>
+        <h4 class='alert-heading'>Oh no!</h4>
+        <p> Ha ocurrido un error </p>
+    </div>
+<% end %>
+
+<%= simple_form_for(@review) do |f| %>
+    <%= f.error_notification %>
+
+    <div class  = "form-inputs">
+        <%= f.input :title %>
+        <%- if @review.errors[:title].any? %>
+            <span class='badge badge-pill badge-danger'>
+                <%= @review.errors[:title].first %>
+            </span>
+        <br>
+        <% end %>
+        <br>
+    </div>
+
+    <div class  = "form-inputs">
+        <%= f.input :category %>
+    </div>
+
+    <table class = "table">
+        <thead>
+            <tr>
+                <th/>
+                <th>Section title</th>
+                <th>Section body</th>
+                <th>Image</th>
+            </tr>
+            
+        <br>
+            </tr>
+        </thead>
+        <tbody class = "section_fields">
+            <%= f.simple_fields_for :sections do |builder| %>
+                <%= render  "section", f: builder %>
+            <% end %>
+        </tbody>
+    </table>
+
+    <table class = "table">
+        <thead>
+            <tr>
+                <th/>
+                <th>Specification name</th>
+                <th>Specification value</th>
+            </tr>
+        </thead>
+        <tbody class = "specification_fields">
+            <%= f.simple_fields_for :specifications do |builder| %>
+                <%= render  "specification", f: builder %>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class = "form-actions">
+        <%= f.button :submit %>
+        <%= link_to_add_row('Add section', f, :sections, class: '_section_btn btn-primary' ) %>
+        <%= link_to_add_row('Add specification', f, :specifications, class: '_specification_btn btn-primary' ) %>
+    </div>
+<% end %>
